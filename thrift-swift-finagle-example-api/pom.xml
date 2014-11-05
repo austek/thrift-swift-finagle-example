@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>thrift-swift-finagle-example</artifactId>
+        <groupId>thrift-swift-finagle</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>thrift-swift-finagle-example-api</artifactId>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.facebook.mojo</groupId>
+                <artifactId>swift2thrift-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <idlFile>hello-world-service.idl</idlFile>
+                    <javaPackage>com.example.api</javaPackage>
+                    <swiftClassNames>
+                        <swiftClassName>com.example.api.HelloWorldService</swiftClassName>
+                    </swiftClassNames>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

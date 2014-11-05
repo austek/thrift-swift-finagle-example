@@ -1,4 +1,27 @@
 *.class
+*.log
+
+# IntelliJ Idea files
+*.iml
+*/*.iml
+*-ide-plugin.xml
+.idea/
+
+.classpath.txt
+
+.vagrant
+.librarian
+.tmp
+
+.svn/
+
+logs
+
+target/
+dist/
+
+data/
+
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
