@@ -13,15 +13,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.sagepay</groupId>
-            <artifactId>basic-finagle-client</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-
-        <dependency>
             <groupId>thrift-swift-finagle</groupId>
             <artifactId>thrift-swift-finagle-example-api</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>finagle-thrift_${scala.major.version}</artifactId>
         </dependency>
     </dependencies>
 </project>
