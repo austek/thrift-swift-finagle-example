@@ -18,7 +18,16 @@ public class WhenHelloWorldServerUp {
     @BeforeClass
     public void setUpClass() throws Exception {
         server = new HelloWorldServer();
-        server.start();
+        new Thread(){
+            @Override
+            public void run() {
+                try {
+                    server.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
     }
 
     @AfterClass

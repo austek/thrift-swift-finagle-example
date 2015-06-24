@@ -1,41 +1,30 @@
 package com.example.server;
 
-import com.twitter.finagle.builder.Server;
-import com.twitter.finagle.builder.ServerBuilder;
-import com.twitter.finagle.builder.ServerConfig;
+import com.twitter.finagle.ListeningServer;
+import com.twitter.finagle.Thrift;
 import com.twitter.finagle.exp.swift.SwiftService;
-import com.twitter.finagle.thrift.ThriftServerFramedCodec;
+import com.twitter.finagle.param.Label;
+import com.twitter.util.Await;
 
 import java.net.InetSocketAddress;
 
 public class HelloWorldServer {
     public static final String NAME = "thrift-swift-finagle-example";
     public static final int PORT = 9510;
-    private Server server;
-    private final ServerBuilder<byte[], byte[], ServerConfig.Yes, ServerConfig.Yes, ServerConfig.Yes> serverBuilder;
+    private ListeningServer server;
 
-    public HelloWorldServer() {
-        InetSocketAddress address = new InetSocketAddress(PORT);
-        serverBuilder = ServerBuilder
-                .get()
-                .codec(ThriftServerFramedCodec.get())
-                .bindTo(address)
-                .name(NAME)
-                .maxConcurrentRequests(10);
+    public void start() throws Exception {
+        System.out.println("Starting server:\n\tPort: " + PORT);
+        Thrift.Server thriftServer = (Thrift.Server) Thrift.server()
+                .configured(new Label(NAME).mk());
+        server = thriftServer.serve(new InetSocketAddress(PORT), new SwiftService(new HelloWorldServiceImpl()));
+        Await.ready(server);
     }
 
-    public void start() {
-        if (server == null) {
-            System.out.println("Starting server:\n\tPort: " + PORT);
-            SwiftService swiftService = new SwiftService(new HelloWorldServiceImpl());
-            server = serverBuilder.unsafeBuild(swiftService);
-        }
-    }
-
-    public void stop() {
+    public void stop() throws Exception {
         if (server != null) {
             System.out.println("Stopping Server...");
-            server.close();
+            Await.result(server.close());
         }
     }
 }
