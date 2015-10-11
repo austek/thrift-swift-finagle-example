@@ -9,6 +9,7 @@ import com.facebook.swift.service.ThriftService;
 import com.twitter.util.Future;
 
 import java.util.List;
+import java.util.UUID;
 
 @ThriftService
 public interface ContactService {
@@ -17,7 +18,7 @@ public interface ContactService {
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)
     })
-    Future<Contact> get(Integer id) throws ContactNotFoundException;
+    Future<Contact> get(UUID id) throws ContactNotFoundException;
 
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)
@@ -27,10 +28,10 @@ public interface ContactService {
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)
     })
-    void delete(Integer id) throws ContactNotFoundException;
+    void delete(UUID id) throws ContactNotFoundException;
 
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)
     })
-    Future<Contact> update(Integer id, ContactRequest contactRequest) throws ContactNotFoundException;
+    Future<Contact> update(UUID id, ContactRequest contactRequest) throws ContactNotFoundException;
 }
