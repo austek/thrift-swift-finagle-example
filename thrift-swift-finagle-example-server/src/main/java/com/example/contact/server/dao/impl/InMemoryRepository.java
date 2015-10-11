@@ -17,12 +17,13 @@ import javax.inject.Singleton;
 
 @Singleton
 public class InMemoryRepository implements ContactRepository {
-    private HashMap<Integer, Contact> repository = new HashMap<>();
+    private HashMap<UUID, Contact> repository = new HashMap<>();
 
     @Override
     public Contact save(ContactRequest contactRequest) throws DaoException, ValidationException {
+        UUID id = UUID.randomUUID();
         Contact.Builder contactBuilder = Contact.builder()
-                .id(UUID.randomUUID())
+                .id(id)
                 .name(contactRequest.getName())
                 .surname(contactRequest.getSurname());
 
@@ -38,12 +39,16 @@ public class InMemoryRepository implements ContactRepository {
             contactBuilder.email(contactRequest.getEmail());
         }
 
-        return repository.put(1, contactBuilder.build());
+        return repository.put(id, contactBuilder.build());
     }
 
     @Override
-    public Contact find(Integer id) throws ContactNotFoundException {
-        return null;
+    public Contact find(UUID id) throws ContactNotFoundException {
+        Contact contact = repository.get(id);
+        if(contact == null){
+            throw new ContactNotFoundException();
+        }
+        return contact;
     }
 
     @Override
@@ -52,12 +57,12 @@ public class InMemoryRepository implements ContactRepository {
     }
 
     @Override
-    public Contact update(Integer id, ContactRequest contactRequest) throws ContactNotFoundException {
+    public Contact update(UUID id, ContactRequest contactRequest) throws ContactNotFoundException {
         return null;
     }
 
     @Override
-    public void delete(Integer id) throws ContactNotFoundException {
+    public void delete(UUID id) throws ContactNotFoundException {
 
     }
 }
