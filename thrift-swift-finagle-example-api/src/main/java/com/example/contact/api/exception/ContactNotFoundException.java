@@ -1,4 +1,4 @@
-package com.example.contact.api;
+package com.example.contact.api.exception;
 
 import com.facebook.swift.codec.ThriftStruct;
 

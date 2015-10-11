@@ -1,5 +1,6 @@
 package com.example.contact.api;
 
+import com.example.contact.api.exception.ContactNotFoundException;
 import com.example.contact.api.model.Contact;
 import com.example.contact.api.model.ContactRequest;
 import com.facebook.swift.service.ThriftException;
