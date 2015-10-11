@@ -1,18 +1,17 @@
 package com.example.contact.server;
 
+import com.example.contact.api.ContactService;
+import com.example.contact.api.exception.ContactNotFoundException;
 import com.example.contact.api.exception.DaoException;
 import com.example.contact.api.exception.ValidationException;
 import com.example.contact.api.model.Contact;
-import com.example.contact.api.ContactService;
-import com.example.contact.api.exception.ContactNotFoundException;
 import com.example.contact.api.model.ContactRequest;
 import com.example.contact.server.dao.ContactRepository;
 import com.twitter.util.Future;
 import com.twitter.util.Promise;
 
-import org.apache.commons.lang3.StringUtils;
-
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -41,7 +40,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Future<Contact> get(Integer id) throws ContactNotFoundException {
+    public Future<Contact> get(UUID id) throws ContactNotFoundException {
         final Promise<Contact> promise = new Promise<>();
         promise.setValue(contactRepository.find(id));
         return promise;
@@ -55,12 +54,12 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void delete(Integer id) throws ContactNotFoundException {
+    public void delete(UUID id) throws ContactNotFoundException {
         contactRepository.delete(id);
     }
 
     @Override
-    public Future<Contact> update(Integer id, ContactRequest contactRequest) throws ContactNotFoundException {
+    public Future<Contact> update(UUID id, ContactRequest contactRequest) throws ContactNotFoundException {
         final Promise<Contact> promise = new Promise<>();
         promise.setValue(contactRepository.update(id, contactRequest));
         return promise;
