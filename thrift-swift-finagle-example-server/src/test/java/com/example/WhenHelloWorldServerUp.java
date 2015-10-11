@@ -1,11 +1,11 @@
 package com.example;
 
-import com.example.api.InvalidUserException;
-import com.example.api.User;
+import com.example.api.model.Contact;
+import com.example.api.ContactNotFoundException;
 import com.example.client.CloseableClient;
 import com.example.client.HelloWorldClientFactory;
 import com.example.server.HelloWorldServer;
-import com.example.server.HelloWorldServiceImpl;
+import com.example.server.ContactServiceImpl;
 import com.twitter.util.Await;
 import com.twitter.util.Future;
 import org.testng.Assert;
@@ -37,7 +37,7 @@ public class WhenHelloWorldServerUp {
 
     @BeforeMethod
     public void setUpMethod() throws Exception {
-        client = new HelloWorldClientFactory().getClient(new HelloWorldServiceImpl());
+        client = new HelloWorldClientFactory().getClient(new ContactServiceImpl());
     }
 
     @AfterMethod
@@ -47,16 +47,16 @@ public class WhenHelloWorldServerUp {
 
     @Test
     public void userNameReturnedCorrectly() throws Exception {
-        User user = new User(1, "name");
-        Future<String> actual = client.get().sayHello(user);
+        Contact contact = new Contact(1, "name", surname, number);
+        Future<String> actual = client.get().sayHello(contact);
         String result = Await.result(actual);
-        Assert.assertEquals(result, "Hello " + user);
+        Assert.assertEquals(result, "Hello " + contact);
     }
 
-    @Test(expectedExceptions = InvalidUserException.class, expectedExceptionsMessageRegExp = "Invalid User")
+    @Test(expectedExceptions = ContactNotFoundException.class, expectedExceptionsMessageRegExp = "Invalid Contact")
     public void exceptionThrownOnEmptyUserName() throws Exception {
-        User user = new User(1, "");
-        Future<String> actual = client.get().sayHello(user);
+        Contact contact = new Contact(1, "", surname, number);
+        Future<String> actual = client.get().sayHello(contact);
         Await.result(actual);
     }
 }

@@ -15,11 +15,11 @@
     </modules>
 
     <properties>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
 
         <scala.major.version>2.10</scala.major.version>
         <scala.version>2.10.4</scala.version>
-        <finagle.version>6.25.0</finagle.version>
+        <finagle.version>6.29.0</finagle.version>
         <twitter-util.version>6.24.0</twitter-util.version>
         <libthrift.version>0.9.1</libthrift.version>
         <facebook-swift.version>0.16.0-SNAPSHOT</facebook-swift.version>

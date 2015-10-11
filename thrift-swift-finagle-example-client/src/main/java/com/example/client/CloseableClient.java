@@ -1,6 +1,6 @@
 package com.example.client;
 
-import com.example.api.HelloWorldService;
+import com.example.api.ContactService;
 import com.twitter.finagle.Service;
 import com.twitter.finagle.thrift.ThriftClientRequest;
 
@@ -10,15 +10,15 @@ import java.util.Objects;
 public class CloseableClient implements AutoCloseable {
 
     private final Service<ThriftClientRequest, byte[]> transport;
-    private final HelloWorldService o;
+    private final ContactService o;
 
-    public CloseableClient(final Service<ThriftClientRequest, byte[]> transport, final HelloWorldService o) {
+    public CloseableClient(final Service<ThriftClientRequest, byte[]> transport, final ContactService o) {
         Objects.requireNonNull(o);
         this.transport = transport;
         this.o = o;
     }
 
-    public HelloWorldService get() {
+    public ContactService get() {
         return o;
     }
 

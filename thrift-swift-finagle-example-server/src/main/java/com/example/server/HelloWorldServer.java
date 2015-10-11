@@ -17,7 +17,7 @@ public class HelloWorldServer {
         System.out.println("Starting server:\n\tPort: " + PORT);
         Thrift.Server thriftServer = (Thrift.Server) Thrift.server()
                 .configured(new Label(NAME).mk());
-        server = thriftServer.serve(new InetSocketAddress(PORT), new SwiftService(new HelloWorldServiceImpl()));
+        server = thriftServer.serve(new InetSocketAddress(PORT), new SwiftService(new ContactServiceImpl()));
         Await.ready(server);
     }
 
