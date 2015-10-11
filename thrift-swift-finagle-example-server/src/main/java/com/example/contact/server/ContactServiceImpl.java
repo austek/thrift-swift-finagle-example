@@ -1,9 +1,12 @@
 package com.example.contact.server;
 
+import com.example.contact.api.exception.DaoException;
+import com.example.contact.api.exception.ValidationException;
 import com.example.contact.api.model.Contact;
 import com.example.contact.api.ContactService;
 import com.example.contact.api.exception.ContactNotFoundException;
 import com.example.contact.api.model.ContactRequest;
+import com.example.contact.server.dao.ContactRepository;
 import com.twitter.util.Future;
 import com.twitter.util.Promise;
 
@@ -11,49 +14,55 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton
 public class ContactServiceImpl implements ContactService {
+
+    private ContactRepository contactRepository;
+
+    @Inject
+    public ContactServiceImpl(final ContactRepository contactRepository) {
+        this.contactRepository = contactRepository;
+    }
+
     @Override
     public Future<Contact> create(ContactRequest contactRequest) {
         final Promise<Contact> promise = new Promise<>();
-        Contact.Builder contactBuilder = Contact.builder()
-                .id(contactRequest.getId())
-                .name(contactRequest.getName())
-                .surname(contactRequest.getSurname());
 
-        if(contactRequest.getDob() != null){
-            contactBuilder.dob(contactRequest.getDob());
+        try {
+            promise.setValue(contactRepository.save(contactRequest));
+        } catch (DaoException | ValidationException e) {
+            promise.setException(e);
         }
-
-        if(StringUtils.isNotBlank(contactRequest.getNumber())){
-            contactBuilder.number(contactRequest.getNumber());
-        }
-
-        if(StringUtils.isNotBlank(contactRequest.getEmail())){
-            contactBuilder.email(contactRequest.getEmail());
-        }
-
-        promise.setValue(contactBuilder.build());
 
         return promise;
     }
 
     @Override
     public Future<Contact> get(Integer id) throws ContactNotFoundException {
-        return null;
+        final Promise<Contact> promise = new Promise<>();
+        promise.setValue(contactRepository.find(id));
+        return promise;
     }
 
     @Override
     public Future<List<Contact>> get() throws ContactNotFoundException {
-        return null;
+        final Promise<List<Contact>> promise = new Promise<>();
+        promise.setValue(contactRepository.findAll());
+        return promise;
     }
 
     @Override
-    public Future<Contact> delete() throws ContactNotFoundException {
-        return null;
+    public void delete(Integer id) throws ContactNotFoundException {
+        contactRepository.delete(id);
     }
 
     @Override
     public Future<Contact> update(Integer id, ContactRequest contactRequest) throws ContactNotFoundException {
-        return null;
+        final Promise<Contact> promise = new Promise<>();
+        promise.setValue(contactRepository.update(id, contactRequest));
+        return promise;
     }
 }
