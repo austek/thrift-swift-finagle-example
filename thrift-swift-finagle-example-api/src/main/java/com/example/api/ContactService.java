@@ -13,7 +13,6 @@ import java.util.List;
 public interface ContactService {
     Future<Contact> create(ContactRequest contactRequest);
 
-
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)
     })

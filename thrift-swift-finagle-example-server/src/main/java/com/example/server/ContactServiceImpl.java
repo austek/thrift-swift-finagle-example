@@ -7,22 +7,34 @@ import com.example.api.model.ContactRequest;
 import com.twitter.util.Future;
 import com.twitter.util.Promise;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 public class ContactServiceImpl implements ContactService {
-    public Future<String> sayHello(Contact contact) throws ContactNotFoundException {
-        final Promise<String> promise = new Promise<>();
-        if(contact == null || contact.getName() == null || contact.getName().isEmpty()){
-            promise.setException(new ContactNotFoundException());
-        }else{
-            promise.setValue("Hello "+ contact);
-        }
-        return promise;
-    }
-
     @Override
     public Future<Contact> create(ContactRequest contactRequest) {
-        return null;
+        final Promise<Contact> promise = new Promise<>();
+        Contact.Builder contactBuilder = Contact.builder()
+                .id(contactRequest.getId())
+                .name(contactRequest.getName())
+                .surname(contactRequest.getSurname());
+
+        if(contactRequest.getDob() != null){
+            contactBuilder.dob(contactRequest.getDob());
+        }
+
+        if(StringUtils.isNotBlank(contactRequest.getNumber())){
+            contactBuilder.number(contactRequest.getNumber());
+        }
+
+        if(StringUtils.isNotBlank(contactRequest.getEmail())){
+            contactBuilder.email(contactRequest.getEmail());
+        }
+
+        promise.setValue(contactBuilder.build());
+
+        return promise;
     }
 
     @Override
