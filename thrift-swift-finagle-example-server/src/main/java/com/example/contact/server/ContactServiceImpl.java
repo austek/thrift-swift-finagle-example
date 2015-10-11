@@ -2,7 +2,7 @@ package com.example.contact.server;
 
 import com.example.contact.api.model.Contact;
 import com.example.contact.api.ContactService;
-import com.example.contact.api.ContactNotFoundException;
+import com.example.contact.api.exception.ContactNotFoundException;
 import com.example.contact.api.model.ContactRequest;
 import com.twitter.util.Future;
 import com.twitter.util.Promise;
