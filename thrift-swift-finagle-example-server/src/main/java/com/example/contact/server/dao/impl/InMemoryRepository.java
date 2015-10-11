@@ -59,7 +59,29 @@ public class InMemoryRepository implements ContactRepository {
 
     @Override
     public Contact update(UUID id, ContactRequest contactRequest) throws ContactNotFoundException {
-        return null;
+        Contact contact = repository.get(id);
+        if(contact == null){
+            throw new ContactNotFoundException();
+        }
+
+        Contact.Builder contactBuilder = Contact.builder()
+                .id(contact.getId())
+                .name(contactRequest.getName())
+                .surname(contactRequest.getSurname());
+
+        if (contactRequest.getDob() != null) {
+            contactBuilder.dob(contactRequest.getDob());
+        }
+
+        if (StringUtils.isNotBlank(contactRequest.getNumber())) {
+            contactBuilder.number(contactRequest.getNumber());
+        }
+
+        if (StringUtils.isNotBlank(contactRequest.getEmail())) {
+            contactBuilder.email(contactRequest.getEmail());
+        }
+
+        return repository.put(id, contactBuilder.build());
     }
 
     @Override
