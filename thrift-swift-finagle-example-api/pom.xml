@@ -49,7 +49,7 @@
                     <idlFile>hello-world-service.idl</idlFile>
                     <javaPackage>com.example.api</javaPackage>
                     <swiftClassNames>
-                        <swiftClassName>com.example.api.ContactService</swiftClassName>
+                        <swiftClassName>com.example.contact.api.ContactService</swiftClassName>
                     </swiftClassNames>
                 </configuration>
             </plugin>

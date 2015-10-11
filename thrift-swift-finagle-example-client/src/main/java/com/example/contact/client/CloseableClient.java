@@ -1,6 +1,6 @@
-package com.example.client;
+package com.example.contact.client;
 
-import com.example.api.ContactService;
+import com.example.contact.api.ContactService;
 import com.twitter.finagle.Service;
 import com.twitter.finagle.thrift.ThriftClientRequest;
 
@@ -32,7 +32,7 @@ public class CloseableClient implements AutoCloseable {
     public void closeSilently() {
         try {
             close();
-        } catch (IOException ex) {
+        } catch (IOException ignored) {
         }
     }
 }
