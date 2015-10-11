@@ -9,6 +9,7 @@ import com.example.contact.server.dao.ContactRepository;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -53,7 +54,7 @@ public class InMemoryRepository implements ContactRepository {
 
     @Override
     public List<Contact> findAll() {
-        return null;
+        return new ArrayList<>(repository.values());
     }
 
     @Override
