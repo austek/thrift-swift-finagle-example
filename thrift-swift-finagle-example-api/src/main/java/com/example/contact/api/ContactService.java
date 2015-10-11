@@ -1,7 +1,7 @@
-package com.example.api;
+package com.example.contact.api;
 
-import com.example.api.model.Contact;
-import com.example.api.model.ContactRequest;
+import com.example.contact.api.model.Contact;
+import com.example.contact.api.model.ContactRequest;
 import com.facebook.swift.service.ThriftException;
 import com.facebook.swift.service.ThriftMethod;
 import com.facebook.swift.service.ThriftService;

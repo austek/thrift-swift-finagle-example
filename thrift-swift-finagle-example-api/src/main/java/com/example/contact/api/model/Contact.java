@@ -1,4 +1,4 @@
-package com.example.api.model;
+package com.example.contact.api.model;
 
 import com.facebook.swift.codec.ThriftConstructor;
 import com.facebook.swift.codec.ThriftField;

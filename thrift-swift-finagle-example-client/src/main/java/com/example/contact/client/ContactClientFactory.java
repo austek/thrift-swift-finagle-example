@@ -1,11 +1,11 @@
-package com.example.client;
+package com.example.contact.client;
 
-import com.example.api.ContactService;
+import com.example.contact.api.ContactService;
 import com.twitter.finagle.Service;
 import com.twitter.finagle.Thrift;
 import com.twitter.finagle.thrift.ThriftClientRequest;
 
-public class HelloWorldClientFactory {
+public class ContactClientFactory {
     private CloseableClient client;
 
     public synchronized CloseableClient getClient(ContactService service) {
