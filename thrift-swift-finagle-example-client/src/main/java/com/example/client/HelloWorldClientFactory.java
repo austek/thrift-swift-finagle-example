@@ -1,6 +1,6 @@
 package com.example.client;
 
-import com.example.api.HelloWorldService;
+import com.example.api.ContactService;
 import com.twitter.finagle.Service;
 import com.twitter.finagle.Thrift;
 import com.twitter.finagle.thrift.ThriftClientRequest;
@@ -8,7 +8,7 @@ import com.twitter.finagle.thrift.ThriftClientRequest;
 public class HelloWorldClientFactory {
     private CloseableClient client;
 
-    public synchronized CloseableClient getClient(HelloWorldService service) {
+    public synchronized CloseableClient getClient(ContactService service) {
         if (client != null) {
             return client;
         }
