@@ -9,28 +9,36 @@ import com.example.contact.server.dao.ContactRepository;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
-public class InMemoryRepository implements ContactRepository{
+import javax.inject.Singleton;
+
+@Singleton
+public class InMemoryRepository implements ContactRepository {
+    private HashMap<Integer, Contact> repository = new HashMap<>();
+
     @Override
     public Contact save(ContactRequest contactRequest) throws DaoException, ValidationException {
         Contact.Builder contactBuilder = Contact.builder()
-                .id(contactRequest.getId())
+                .id(UUID.randomUUID())
                 .name(contactRequest.getName())
                 .surname(contactRequest.getSurname());
 
-        if(contactRequest.getDob() != null){
+        if (contactRequest.getDob() != null) {
             contactBuilder.dob(contactRequest.getDob());
         }
 
-        if(StringUtils.isNotBlank(contactRequest.getNumber())){
+        if (StringUtils.isNotBlank(contactRequest.getNumber())) {
             contactBuilder.number(contactRequest.getNumber());
         }
 
-        if(StringUtils.isNotBlank(contactRequest.getEmail())){
+        if (StringUtils.isNotBlank(contactRequest.getEmail())) {
             contactBuilder.email(contactRequest.getEmail());
         }
-        return contactBuilder.build();
+
+        return repository.put(1, contactBuilder.build());
     }
 
     @Override

@@ -10,7 +10,6 @@ import javax.annotation.concurrent.Immutable;
 @ThriftStruct(builder = ContactRequest.Builder.class)
 public class ContactRequest {
     /* MANDATORY FIELDS */
-    private Integer id;
     private String name;
     private String surname;
     /* MANDATORY FIELDS */
@@ -21,7 +20,6 @@ public class ContactRequest {
 
     @ThriftConstructor
     public ContactRequest(Builder builder) {
-        this.id = builder.id;
         this.name = builder.name;
         this.surname = builder.surname;
         this.number = builder.number;
@@ -30,42 +28,36 @@ public class ContactRequest {
     }
 
     @ThriftField(1)
-    public Integer getId() {
-        return id;
-    }
-
-    @ThriftField(2)
     public String getName() {
         return name;
     }
 
-    @ThriftField(3)
+    @ThriftField(2)
     public String getSurname() {
         return surname;
     }
 
-    @ThriftField(4)
+    @ThriftField(3)
     public String getNumber() {
         return number;
     }
 
-    @ThriftField(5)
+    @ThriftField(4)
     public String getEmail() {
         return email;
     }
 
-    @ThriftField(6)
+    @ThriftField(5)
     public Long getDob() {
         return dob;
     }
 
-    public static Id builder() {
+    public static Name builder() {
         return new Builder();
     }
 
-    public static class Builder implements Id, Name, Surname {
+    public static class Builder implements Name, Surname {
         /* MANDATORY FIELDS */
-        private Integer id;
         private String name;
         private String surname;
         /* MANDATORY FIELDS */
@@ -73,12 +65,6 @@ public class ContactRequest {
         private String number;
         private String email;
         private Long dob;
-
-        @ThriftField
-        public Name id(Integer id) {
-            this.id = id;
-            return this;
-        }
 
         @ThriftField
         public Surname name(String name) {
@@ -114,11 +100,6 @@ public class ContactRequest {
         public ContactRequest build() {
             return new ContactRequest(this);
         }
-
-    }
-
-    public interface Id {
-        Name id(Integer id);
     }
 
     public interface Name {
