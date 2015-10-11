@@ -1,5 +1,6 @@
 package com.example.contact.server;
 
+import com.example.contact.server.dao.impl.InMemoryRepository;
 import com.twitter.finagle.ListeningServer;
 import com.twitter.finagle.Thrift;
 import com.twitter.finagle.exp.swift.SwiftService;
@@ -17,7 +18,14 @@ public class ContactServer {
         System.out.println("Starting server:\n\tPort: " + PORT);
         Thrift.Server thriftServer = (Thrift.Server) Thrift.server()
                 .configured(new Label(NAME).mk());
-        server = thriftServer.serve(new InetSocketAddress(PORT), new SwiftService(new ContactServiceImpl()));
+        server = thriftServer.serve(
+                new InetSocketAddress(PORT),
+                new SwiftService(
+                        new ContactServiceImpl(
+                                new InMemoryRepository()
+                        )
+                )
+        );
         Await.ready(server);
     }
 
