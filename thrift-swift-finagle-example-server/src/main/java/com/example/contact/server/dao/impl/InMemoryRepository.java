@@ -44,7 +44,7 @@ public class InMemoryRepository implements ContactRepository{
     }
 
     @Override
-    public Contact update(Integer id, Contact contact) throws ContactNotFoundException {
+    public Contact update(Integer id, ContactRequest contactRequest) throws ContactNotFoundException {
         return null;
     }
 
