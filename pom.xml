@@ -24,13 +24,14 @@
         <twitter-util.version>6.24.0</twitter-util.version>
         <libthrift.version>0.9.1</libthrift.version>
         <facebook-swift.version>0.16.0-SNAPSHOT</facebook-swift.version>
+        <joda-time.version>2.0</joda-time.version>
+        <jsr305.version>2.0.1</jsr305.version>
+        <dropwizard.version>0.8.2</dropwizard.version>
 
         <testng.version>6.9.4</testng.version>
 
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
-        <joda-time.version>2.0</joda-time.version>
-        <jsr305.version>2.0.1</jsr305.version>
     </properties>
 
     <dependencyManagement>
@@ -80,6 +81,11 @@
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>
                 <version>${jsr305.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.dropwizard</groupId>
+                <artifactId>dropwizard-core</artifactId>
+                <version>${dropwizard.version}</version>
             </dependency>
 
             <!-- TEST DEPENDENCIES -->

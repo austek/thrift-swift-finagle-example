@@ -11,5 +11,11 @@
 
     <artifactId>thrift-swift-finagle-example-rest</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-core</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
