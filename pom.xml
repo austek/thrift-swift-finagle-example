@@ -12,6 +12,7 @@
         <module>thrift-swift-finagle-example-api</module>
         <module>thrift-swift-finagle-example-client</module>
         <module>thrift-swift-finagle-example-server</module>
+        <module>thrift-swift-finagle-example-rest</module>
     </modules>
 
     <properties>
