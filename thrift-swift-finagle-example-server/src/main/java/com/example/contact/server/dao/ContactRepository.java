@@ -8,7 +8,7 @@ import com.example.contact.api.model.ContactRequest;
 
 import java.util.List;
 
-public interface ContactDao {
+public interface ContactRepository {
 
     Contact save(ContactRequest contactRequest) throws DaoException, ValidationException;
 
@@ -16,7 +16,7 @@ public interface ContactDao {
 
     List<Contact> findAll();
 
-    Contact update(Integer id, Contact contact) throws ContactNotFoundException;
+    Contact update(Integer id, ContactRequest contact) throws ContactNotFoundException;
 
     void delete(Integer id) throws ContactNotFoundException;
 }

@@ -27,7 +27,7 @@ public interface ContactService {
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)
     })
-    Future<Contact> delete() throws ContactNotFoundException;
+    void delete(Integer id) throws ContactNotFoundException;
 
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)
