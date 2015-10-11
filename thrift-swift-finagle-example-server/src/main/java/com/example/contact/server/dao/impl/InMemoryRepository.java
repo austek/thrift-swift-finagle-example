@@ -86,6 +86,11 @@ public class InMemoryRepository implements ContactRepository {
 
     @Override
     public void delete(UUID id) throws ContactNotFoundException {
+        Contact contact = repository.get(id);
+        if(contact == null){
+            throw new ContactNotFoundException();
+        }
 
+        repository.remove(contact.getId());
     }
 }
