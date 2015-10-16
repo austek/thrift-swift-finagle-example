@@ -13,15 +13,10 @@ import com.twitter.util.Promise;
 import java.util.List;
 import java.util.UUID;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-
-@Singleton
 public class ContactServiceImpl implements ContactService {
 
     private ContactRepository contactRepository;
 
-    @Inject
     public ContactServiceImpl(final ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
     }

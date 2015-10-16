@@ -13,8 +13,25 @@
 
     <dependencies>
         <dependency>
+            <groupId>thrift-swift-finagle</groupId>
+            <artifactId>thrift-swift-finagle-example-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-zipkin-spancollector</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-jersey</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.kristofa</groupId>
+            <artifactId>brave-impl</artifactId>
         </dependency>
     </dependencies>
 
