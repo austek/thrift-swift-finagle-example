@@ -6,6 +6,7 @@ import com.twitter.finagle.Thrift;
 import com.twitter.finagle.thrift.ThriftClientRequest;
 
 public class ContactClientFactory {
+
     private CloseableClient client;
 
     public synchronized CloseableClient getClient(ContactService service) {
