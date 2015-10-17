@@ -18,7 +18,6 @@ public class ContactRequest {
     private String email;
     private Long dob;
 
-    @ThriftConstructor
     public ContactRequest(Builder builder) {
         this.name = builder.name;
         this.surname = builder.surname;

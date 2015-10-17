@@ -35,7 +35,7 @@ public class ContactRestServer extends Application<ContactRestServerConfig> {
     public void run(ContactRestServerConfig contactRestServerConfig, Environment environment) throws Exception {
         ServerTracer serverTracer = getServerTracer(contactRestServerConfig, environment);
 
-        environment.jersey().register(new ContactResource(serverTracer));
+        environment.jersey().register(new ContactResource(clientConfig, serverTracer));
     }
 
     private ServerTracer getServerTracer(ContactRestServerConfig contactRestServerConfig, Environment environment) {
