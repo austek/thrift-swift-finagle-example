@@ -1,5 +1,6 @@
 package com.example.contact.client;
 
+import com.example.config.ClientConfig;
 import com.example.contact.api.ContactService;
 import com.twitter.finagle.Service;
 import com.twitter.finagle.Thrift;
@@ -9,12 +10,23 @@ public class ContactClientFactory {
 
     private CloseableClient client;
 
+    private ClientConfig clientConfig;
+
+    public ContactClientFactory(ClientConfig clientConfig) {
+        this.clientConfig = clientConfig;
+    }
+
     public synchronized CloseableClient getClient(ContactService service) {
         if (client != null) {
             return client;
         }
-        Service<ThriftClientRequest, byte[]> thriftClientRequestService = Thrift.newClient("127.0.0.1:9510").toService();
 
-        return new CloseableClient(thriftClientRequestService, service);
+        Thrift.Client thriftClient = Thrift.client();
+        Object iface = thriftClient.newIface(clientConfig.serverConfig.hosts, "contact-service", ContactService.class);
+
+        Service<ThriftClientRequest, byte[]> thriftClientRequestService =
+                Thrift.client().newClient(clientConfig.serverConfig.hosts, "contact-service").toService();
+
+        return new CloseableClient(thriftClientRequestService, null);
     }
 }

@@ -21,7 +21,6 @@ public final class Contact {
     private String email;
     private Long dob;
 
-    @ThriftConstructor
     public Contact(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
