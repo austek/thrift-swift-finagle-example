@@ -8,7 +8,7 @@ import javax.annotation.concurrent.Immutable;
 
 @Immutable
 @ThriftStruct(builder = ContactRequest.Builder.class)
-public class ContactRequest {
+public final class ContactRequest {
     /* MANDATORY FIELDS */
     private String name;
     private String surname;

@@ -4,15 +4,13 @@ import com.facebook.swift.codec.ThriftConstructor;
 import com.facebook.swift.codec.ThriftField;
 import com.facebook.swift.codec.ThriftStruct;
 
-import java.util.UUID;
-
 import javax.annotation.concurrent.Immutable;
 
 @Immutable
 @ThriftStruct(builder = Contact.Builder.class)
 public final class Contact {
     /* MANDATORY FIELDS */
-    private UUID id;
+    private String id;
     private String name;
     private String surname;
     /* MANDATORY FIELDS */
@@ -31,7 +29,7 @@ public final class Contact {
     }
 
     @ThriftField(1)
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
@@ -66,7 +64,7 @@ public final class Contact {
 
     public static class Builder implements Id, Name, Surname {
         /* MANDATORY FIELDS */
-        private UUID id;
+        private String id;
         private String name;
         private String surname;
         /* MANDATORY FIELDS */
@@ -76,7 +74,7 @@ public final class Contact {
         private Long dob;
 
         @ThriftField
-        public Name id(UUID id) {
+        public Name id(String id) {
             this.id = id;
             return this;
         }
@@ -119,7 +117,7 @@ public final class Contact {
     }
 
     public interface Id {
-        Name id(UUID id);
+        Name id(String id);
     }
 
     public interface Name {
