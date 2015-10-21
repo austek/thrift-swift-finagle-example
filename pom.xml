@@ -33,6 +33,7 @@
         <guava.version>18.0</guava.version>
         <jackson.version>${commons-lang.version}.3</jackson.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
+        <httpcore.version>4.4.3</httpcore.version>
 
         <testng.version>6.9.4</testng.version>
 
@@ -173,6 +174,11 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpcore</artifactId>
+                <version>${httpcore.version}</version>
             </dependency>
 
             <!-- TEST DEPENDENCIES -->

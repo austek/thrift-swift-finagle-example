@@ -12,6 +12,8 @@ import java.util.List;
 
 @ThriftService
 public interface ContactService {
+    int ERROR_CODE_CONTACT_NOT_FOUND = 1000;
+
     Future<Contact> create(ContactRequest contactRequest);
 
     @ThriftMethod(exception = {
