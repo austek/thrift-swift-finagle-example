@@ -30,27 +30,27 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>com.facebook.mojo</groupId>
-                <artifactId>swift2thrift-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <idlFile>hello-world-service.idl</idlFile>
-                    <javaPackage>com.example.api</javaPackage>
-                    <swiftClassNames>
-                        <swiftClassName>com.example.contact.api.ContactService</swiftClassName>
-                    </swiftClassNames>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>com.facebook.mojo</groupId>-->
+                <!--<artifactId>swift2thrift-maven-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>process-classes</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<idlFile>contact-service.idl</idlFile>-->
+                    <!--<javaPackage>com.example.api.contact.api</javaPackage>-->
+                    <!--<swiftClassNames>-->
+                        <!--<swiftClassName>com.example.contact.api.ContactService</swiftClassName>-->
+                    <!--</swiftClassNames>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
 </project>

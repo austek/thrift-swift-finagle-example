@@ -22,16 +22,16 @@
         <scala.major.version>2.10</scala.major.version>
         <scala.version>2.10.4</scala.version>
         <finagle.version>6.29.0</finagle.version>
-        <twitter-util.version>6.24.0</twitter-util.version>
         <libthrift.version>0.9.1</libthrift.version>
         <facebook-swift.version>0.16.0-SNAPSHOT</facebook-swift.version>
         <joda-time.version>2.0</joda-time.version>
         <jsr305.version>2.0.1</jsr305.version>
         <dropwizard.version>0.8.2</dropwizard.version>
-        <brave.version>2.3</brave.version>
+        <brave.version>3.0.0</brave.version>
+        <brave.impl.version>2.4.2</brave.impl.version>
         <commons.version>3.1</commons.version>
         <guava.version>18.0</guava.version>
-        <jackson.version>2.6.3</jackson.version>
+        <jackson.version>${commons-lang.version}.3</jackson.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
 
         <testng.version>6.9.4</testng.version>
@@ -40,6 +40,7 @@
         <maven-surefire-plugin.version>2.17</maven-surefire-plugin.version>
         <jasypt.version>1.9.2</jasypt.version>
         <slf4j-api.version>1.7.12</slf4j-api.version>
+        <commons-lang.version>2.6</commons-lang.version>
     </properties>
 
     <dependencyManagement>
@@ -52,7 +53,7 @@
             <dependency>
                 <groupId>com.twitter</groupId>
                 <artifactId>util-core_${scala.major.version}</artifactId>
-                <version>${twitter-util.version}</version>
+                <version>${finagle.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.thrift</groupId>
@@ -104,21 +105,44 @@
                 <groupId>com.github.kristofa</groupId>
                 <artifactId>brave-zipkin-spancollector</artifactId>
                 <version>${brave.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.github.kristofa</groupId>
-                <artifactId>brave-jersey</artifactId>
+                <artifactId>brave-jersey2</artifactId>
                 <version>${brave.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>com.github.kristofa</groupId>
                 <artifactId>brave-impl</artifactId>
-                <version>${brave.version}</version>
+                <version>${brave.impl.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons-lang.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.google.guava</groupId>

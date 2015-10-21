@@ -16,7 +16,7 @@ public class ContactClientFactory {
         this.clientConfig = clientConfig;
     }
 
-    public synchronized CloseableClient getClient(ContactService service) {
+    public synchronized CloseableClient getClient() {
         if (client != null) {
             return client;
         }
@@ -27,6 +27,6 @@ public class ContactClientFactory {
         Service<ThriftClientRequest, byte[]> thriftClientRequestService =
                 Thrift.client().newClient(clientConfig.serverConfig.hosts, "contact-service").toService();
 
-        return new CloseableClient(thriftClientRequestService, null);
+        return new CloseableClient(thriftClientRequestService, (ContactService)iface);
     }
 }

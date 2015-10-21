@@ -24,7 +24,7 @@ public class InMemoryRepository implements ContactRepository {
     public Contact save(ContactRequest contactRequest) throws DaoException, ValidationException {
         UUID id = UUID.randomUUID();
         Contact.Builder contactBuilder = Contact.builder()
-                .id(id)
+                .id(id.toString())
                 .name(contactRequest.getName())
                 .surname(contactRequest.getSurname());
 

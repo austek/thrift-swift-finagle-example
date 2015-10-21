@@ -2,9 +2,9 @@ package com.example.contact.rest.resource;
 
 import com.codahale.metrics.annotation.Timed;
 import com.example.config.ClientConfig;
-import com.example.contact.api.model.ContactRequest;
 import com.example.contact.client.CloseableClient;
 import com.example.contact.client.ContactClientFactory;
+import com.example.contact.rest.model.RestContactRequest;
 import com.github.kristofa.brave.ServerTracer;
 
 import javax.ws.rs.POST;
@@ -28,8 +28,8 @@ public class ContactResource {
 
     @POST
     @Timed
-    public Response addContact(ContactRequest contactRequest){
-        client.get().create(contactRequest);
+    public Response addContact(RestContactRequest restContactRequest){
+        client.get().create(RestContactRequest.to(restContactRequest));
         return Response.ok().build();
     }
 }

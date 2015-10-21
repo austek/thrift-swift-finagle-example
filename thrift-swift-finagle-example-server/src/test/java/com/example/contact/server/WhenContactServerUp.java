@@ -3,7 +3,6 @@ package com.example.contact.server;
 import com.example.config.ClientConfig;
 import com.example.contact.client.CloseableClient;
 import com.example.contact.client.ContactClientFactory;
-import com.example.contact.server.dao.impl.InMemoryRepository;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -37,7 +36,7 @@ public class WhenContactServerUp {
     @BeforeMethod
     public void setUpMethod() throws Exception {
         ClientConfig clientConfig = null;
-        client = new ContactClientFactory(clientConfig).getClient(new ContactServiceImpl(new InMemoryRepository()));
+        client = new ContactClientFactory(clientConfig).getClient();
     }
 
     @AfterMethod

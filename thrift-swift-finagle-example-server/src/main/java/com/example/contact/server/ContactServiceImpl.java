@@ -35,9 +35,9 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Future<Contact> get(UUID id) throws ContactNotFoundException {
+    public Future<Contact> get(String id) throws ContactNotFoundException {
         final Promise<Contact> promise = new Promise<>();
-        promise.setValue(contactRepository.find(id));
+        promise.setValue(contactRepository.find(UUID.fromString(id)));
         return promise;
     }
 
@@ -49,14 +49,15 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void delete(UUID id) throws ContactNotFoundException {
-        contactRepository.delete(id);
+    public Future<String> delete(String id) throws ContactNotFoundException {
+        contactRepository.delete(UUID.fromString(id));
+        return Future.value("");
     }
 
     @Override
-    public Future<Contact> update(UUID id, ContactRequest contactRequest) throws ContactNotFoundException {
+    public Future<Contact> update(String id, ContactRequest contactRequest) throws ContactNotFoundException {
         final Promise<Contact> promise = new Promise<>();
-        promise.setValue(contactRepository.update(id, contactRequest));
+        promise.setValue(contactRepository.update(UUID.fromString(id), contactRequest));
         return promise;
     }
 }

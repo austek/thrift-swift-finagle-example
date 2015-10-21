@@ -32,11 +32,15 @@
         </dependency>
         <dependency>
             <groupId>com.github.kristofa</groupId>
-            <artifactId>brave-jersey</artifactId>
+            <artifactId>brave-jersey2</artifactId>
         </dependency>
         <dependency>
             <groupId>com.github.kristofa</groupId>
             <artifactId>brave-impl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
         </dependency>
     </dependencies>
 
