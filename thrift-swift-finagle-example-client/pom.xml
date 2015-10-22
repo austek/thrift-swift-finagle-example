@@ -27,7 +27,7 @@
             <artifactId>finagle-thrift_${scala.major.version}</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.twitter</groupId>
+            <groupId>io.github.finagle</groupId>
             <artifactId>finagle-swift_${scala.major.version}</artifactId>
         </dependency>
     </dependencies>
