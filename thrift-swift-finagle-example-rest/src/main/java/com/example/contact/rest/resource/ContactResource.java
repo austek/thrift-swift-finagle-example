@@ -41,6 +41,7 @@ public class ContactResource {
             Contact contact = Await.result(contactFuture);
             return Response.ok(contact).build();
         } catch (Exception e) {
+            e.printStackTrace();
             return Response.status(Response.Status.NOT_FOUND).entity(
                     new ExampleResponse(
                             ContactService.ERROR_CODE_CONTACT_NOT_FOUND,

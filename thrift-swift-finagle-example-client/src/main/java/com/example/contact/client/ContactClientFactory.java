@@ -22,11 +22,13 @@ public class ContactClientFactory {
         }
 
         Thrift.Client thriftClient = Thrift.client();
-        Object iface = thriftClient.newIface(clientConfig.serverConfig.hosts, "contact-service", ContactService.class);
 
         Service<ThriftClientRequest, byte[]> thriftClientRequestService =
-                Thrift.client().newClient(clientConfig.serverConfig.hosts, "contact-service").toService();
+                thriftClient.newClient(clientConfig.serverConfig.hosts, "contact-service").toService();
 
-        return new CloseableClient(thriftClientRequestService, (ContactService)iface);
+        //ContactService o = (ContactService)SwiftProxy.newJavaClient(thriftClientRequestService, ContactService.class);
+        ContactService o = thriftClient.newIface(clientConfig.serverConfig.hosts, "contact-service", ContactService.class);
+
+        return new CloseableClient(thriftClientRequestService, o);
     }
 }
