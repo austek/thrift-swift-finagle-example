@@ -14,6 +14,7 @@ import java.util.List;
 public interface ContactService {
     int ERROR_CODE_CONTACT_NOT_FOUND = 1000;
 
+    @ThriftMethod
     Future<Contact> create(ContactRequest contactRequest);
 
     @ThriftMethod(exception = {
@@ -24,7 +25,7 @@ public interface ContactService {
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)
     })
-    Future<List<Contact>> get() throws ContactNotFoundException;
+    Future<List<Contact>> getAll() throws ContactNotFoundException;
 
     @ThriftMethod(exception = {
             @ThriftException(type = ContactNotFoundException.class, id=1)

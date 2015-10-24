@@ -42,7 +42,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Future<List<Contact>> get() throws ContactNotFoundException {
+    public Future<List<Contact>> getAll() throws ContactNotFoundException {
         final Promise<List<Contact>> promise = new Promise<>();
         promise.setValue(contactRepository.findAll());
         return promise;
