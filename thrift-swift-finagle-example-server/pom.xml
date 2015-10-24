@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>thrift-swift-finagle</groupId>
-            <artifactId>thrift-swift-finagle-example-client</artifactId>
+            <artifactId>thrift-swift-finagle-example-util</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
@@ -36,6 +36,12 @@
         <!--</dependency>-->
 
         <!-- TEST DEPENDENCIES -->
+        <dependency>
+            <groupId>thrift-swift-finagle</groupId>
+            <artifactId>thrift-swift-finagle-example-client</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
