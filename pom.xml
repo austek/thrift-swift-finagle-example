@@ -21,9 +21,11 @@
 
         <scala.major.version>2.11</scala.major.version>
         <scala.version>2.11.7</scala.version>
-        <finagle.version>6.29.0</finagle.version>
-        <libthrift.version>0.9.1</libthrift.version>
+        <finagle.version>6.30.0</finagle.version>
+        <twitter-util.version>6.29.0</twitter-util.version>
+        <finagle-swift.version>0.1-SNAPSHOT</finagle-swift.version>
         <facebook-swift.version>0.16.0-SNAPSHOT</facebook-swift.version>
+        <libthrift.version>0.9.1</libthrift.version>
         <joda-time.version>2.0</joda-time.version>
         <jsr305.version>2.0.1</jsr305.version>
         <dropwizard.version>0.8.2</dropwizard.version>
@@ -31,10 +33,9 @@
         <brave.impl.version>2.4.2</brave.impl.version>
         <commons.version>3.1</commons.version>
         <guava.version>18.0</guava.version>
-        <jackson.version>${commons-lang.version}.3</jackson.version>
+        <jackson.version>2.6.3</jackson.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <httpcore.version>4.4.3</httpcore.version>
-        <finagle-swift.version>0.1-SNAPSHOT</finagle-swift.version>
 
         <testng.version>6.9.4</testng.version>
 
@@ -55,7 +56,7 @@
             <dependency>
                 <groupId>com.twitter</groupId>
                 <artifactId>util-core_${scala.major.version}</artifactId>
-                <version>${finagle.version}</version>
+                <version>${twitter-util.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.thrift</groupId>
