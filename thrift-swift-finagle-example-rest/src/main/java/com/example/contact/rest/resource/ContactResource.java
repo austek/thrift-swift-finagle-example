@@ -53,8 +53,8 @@ public class ContactResource {
 
     @GET
     @Timed
-    @Path("{id}")
-    public Response getContact(@PathParam("{id}") String id) {
+    @Path("/{id}")
+    public Response getContact(@PathParam("id") String id) {
         try {
             Future<Contact> contactFuture = client.get().get(id);
             Contact contact = Await.result(contactFuture);
