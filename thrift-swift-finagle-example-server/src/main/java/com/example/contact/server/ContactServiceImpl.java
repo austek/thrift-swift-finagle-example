@@ -69,9 +69,17 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Future<Contact> update(String id, ContactRequest contactRequest) throws ContactNotFoundException {
+    public Future<Contact> update(String id, ContactRequest contactRequest) {
+        if(StringUtils.isBlank(id)){
+            return Future.exception(new ContactNotFoundException());
+        }
         final Promise<Contact> promise = new Promise<>();
-        promise.setValue(contactRepository.update(UUID.fromString(id), contactRequest));
+        try {
+            promise.setValue(contactRepository.update(UUID.fromString(id), contactRequest));
+        } catch (ContactNotFoundException e) {
+            return Future.exception(e);
+        }
+
         return promise;
     }
 }
