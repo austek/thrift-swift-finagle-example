@@ -40,7 +40,9 @@ public class InMemoryRepository implements ContactRepository {
             contactBuilder.email(contactRequest.getEmail());
         }
 
-        return repository.put(id, contactBuilder.build());
+        Contact contact = contactBuilder.build();
+        repository.put(id, contact);
+        return contact;
     }
 
     @Override
@@ -91,6 +93,6 @@ public class InMemoryRepository implements ContactRepository {
             throw new ContactNotFoundException();
         }
 
-        repository.remove(contact.getId());
+        repository.remove(id);
     }
 }
