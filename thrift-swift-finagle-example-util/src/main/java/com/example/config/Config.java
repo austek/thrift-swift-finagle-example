@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
-abstract class Config {
+public abstract class Config {
     public final Config $this = this;
 
     public Resource configFolder;

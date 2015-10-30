@@ -1,6 +1,6 @@
 package com.example.contact.client;
 
-import com.example.config.ClientConfig;
+import com.example.config.client.ClientConfig;
 import com.example.contact.api.ContactService;
 import com.twitter.finagle.Service;
 import com.twitter.finagle.Thrift;

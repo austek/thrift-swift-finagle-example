@@ -1,5 +1,7 @@
-package com.example.config;
+package com.example.config.client;
 
+import com.example.config.Config;
+import com.example.config.TracingConfig;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ClientConfig extends Config {
