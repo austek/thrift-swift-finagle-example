@@ -1,7 +1,7 @@
 package com.example.contact.rest.resource;
 
 import com.codahale.metrics.annotation.Timed;
-import com.example.config.ClientConfig;
+import com.example.config.client.ClientConfig;
 import com.example.contact.api.ContactService;
 import com.example.contact.api.model.Contact;
 import com.example.contact.client.CloseableClient;
