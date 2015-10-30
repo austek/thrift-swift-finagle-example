@@ -14,6 +14,7 @@ import com.twitter.util.Future;
 
 import java.util.List;
 
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -78,6 +79,24 @@ public class ContactResource {
             Future<List<Contact>> contactFuture = client.get().getAll();
             List<Contact> contacts = Await.result(contactFuture);
            return Response.ok(contacts).build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(
+                    new ExampleResponse(
+                            ContactService.ERROR_CODE_CONTACT_NOT_FOUND,
+                            e.getMessage()
+                    )
+            ).build();
+        }
+    }
+
+    @DELETE
+    @Timed
+    @Path("/{id}")
+    public Response deleteContact(@PathParam("id") String id) {
+        try {
+            Future<String> contactFuture = client.get().delete(id);
+            Await.result(contactFuture);
+            return Response.ok().build();
         } catch (Exception e) {
             return Response.status(Response.Status.NOT_FOUND).entity(
                     new ExampleResponse(
