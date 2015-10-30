@@ -56,9 +56,16 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Future<String> delete(String id) throws ContactNotFoundException {
-        contactRepository.delete(UUID.fromString(id));
-        return Future.value("");
+    public Future<String> delete(String id) {
+        if(StringUtils.isBlank(id)){
+            return Future.exception(new ContactNotFoundException());
+        }
+        try {
+            contactRepository.delete(UUID.fromString(id));
+            return Future.value("");
+        } catch (ContactNotFoundException e) {
+            return Future.exception(e);
+        }
     }
 
     @Override
