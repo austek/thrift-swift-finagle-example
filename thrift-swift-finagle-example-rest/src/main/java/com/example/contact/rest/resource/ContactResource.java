@@ -17,6 +17,7 @@ import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -97,6 +98,24 @@ public class ContactResource {
             Future<String> contactFuture = client.get().delete(id);
             Await.result(contactFuture);
             return Response.ok().build();
+        } catch (Exception e) {
+            return Response.status(Response.Status.NOT_FOUND).entity(
+                    new ExampleResponse(
+                            ContactService.ERROR_CODE_CONTACT_NOT_FOUND,
+                            e.getMessage()
+                    )
+            ).build();
+        }
+    }
+
+    @PUT
+    @Timed
+    @Path("/{id}")
+    public Response updateContact(@PathParam("id") String id, RestContactRequest restContactRequest) {
+        try {
+            Future<Contact> contactFuture = client.get().update(id, RestContactRequest.to(restContactRequest));
+            Contact updateContact = Await.result(contactFuture);
+            return Response.ok(updateContact).build();
         } catch (Exception e) {
             return Response.status(Response.Status.NOT_FOUND).entity(
                     new ExampleResponse(
