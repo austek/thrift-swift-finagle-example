@@ -32,7 +32,15 @@
         </dependency>
         <dependency>
             <groupId>com.twitter</groupId>
+            <artifactId>finagle-http_${scala.major.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
             <artifactId>util-core_${scala.major.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>twitter-server_${scala.major.version}</artifactId>
         </dependency>
 
         <!-- TEST DEPENDENCIES -->

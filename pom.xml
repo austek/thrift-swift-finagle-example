@@ -21,8 +21,10 @@
 
         <scala.major.version>2.11</scala.major.version>
         <scala.version>2.11.7</scala.version>
-        <finagle.version>6.29.0</finagle.version>
-        <twitter-util.version>6.28.0</twitter-util.version>
+        <finagle.version>6.30.0</finagle.version>
+        <finagle-http.version>6.30.0</finagle-http.version>
+        <twitter-util.version>6.29.0</twitter-util.version>
+        <twitter-server.version>1.15.0</twitter-server.version>
         <finagle-swift.version>0.1-SNAPSHOT</finagle-swift.version>
         <facebook-swift.version>0.16.0-SNAPSHOT</facebook-swift.version>
         <libthrift.version>0.9.1</libthrift.version>
@@ -33,7 +35,7 @@
         <brave.impl.version>2.4.2</brave.impl.version>
         <commons.version>3.1</commons.version>
         <guava.version>18.0</guava.version>
-        <jackson.version>2.6.3</jackson.version>
+        <jackson.version>2.5.1</jackson.version>
         <validation-api.version>1.1.0.Final</validation-api.version>
         <httpcore.version>4.4.3</httpcore.version>
 
@@ -59,6 +61,11 @@
                 <version>${twitter-util.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.twitter</groupId>
+                <artifactId>twitter-server_${scala.major.version}</artifactId>
+                <version>${twitter-server.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.thrift</groupId>
                 <artifactId>libthrift</artifactId>
                 <version>${libthrift.version}</version>
@@ -72,6 +79,11 @@
                 <groupId>com.twitter</groupId>
                 <artifactId>finagle-thrift_${scala.major.version}</artifactId>
                 <version>${finagle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.twitter</groupId>
+                <artifactId>finagle-http_${scala.major.version}</artifactId>
+                <version>${finagle-http.version}</version>
             </dependency>
             <dependency>
                 <groupId>io.github.finagle</groupId>

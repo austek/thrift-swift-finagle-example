@@ -1,4 +1,4 @@
-package com.example.contact.server.config;
+package com.example.server.config;
 
 import com.example.config.Config;
 import com.example.config.TracingConfig;
@@ -8,9 +8,6 @@ public class FinagleServerConfig extends Config {
 
     @JsonProperty("server")
     public ServerConfig serverConfig;
-
-    @JsonProperty("monitoring")
-    public MonitoringConfig monitoringConfig;
 
     @JsonProperty("tracing")
     public TracingConfig tracingConfig;

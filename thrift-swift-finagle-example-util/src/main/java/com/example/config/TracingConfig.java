@@ -6,5 +6,5 @@ public class TracingConfig {
     public String server;
     public Integer port;
     @JsonProperty("sample-rate")
-    public Integer sampleRate;
+    public Float sampleRate;
 }

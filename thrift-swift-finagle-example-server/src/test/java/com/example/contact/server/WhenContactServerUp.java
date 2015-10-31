@@ -3,7 +3,7 @@ package com.example.contact.server;
 import com.example.config.client.ClientConfig;
 import com.example.contact.client.CloseableClient;
 import com.example.contact.client.ContactClientFactory;
-import com.example.contact.server.config.FinagleServerConfig;
+import com.example.server.config.FinagleServerConfig;
 
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
