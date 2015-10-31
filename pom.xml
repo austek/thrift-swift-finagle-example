@@ -21,8 +21,8 @@
 
         <scala.major.version>2.11</scala.major.version>
         <scala.version>2.11.7</scala.version>
-        <finagle.version>6.30.0</finagle.version>
-        <twitter-util.version>6.29.0</twitter-util.version>
+        <finagle.version>6.29.0</finagle.version>
+        <twitter-util.version>6.28.0</twitter-util.version>
         <finagle-swift.version>0.1-SNAPSHOT</finagle-swift.version>
         <facebook-swift.version>0.16.0-SNAPSHOT</facebook-swift.version>
         <libthrift.version>0.9.1</libthrift.version>
