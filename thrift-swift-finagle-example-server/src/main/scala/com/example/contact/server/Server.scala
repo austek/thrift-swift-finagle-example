@@ -35,7 +35,7 @@ object Server {
         }
       }.start()
     } else {
-      server.main(Array("-admin.port=':"+ config.serverConfig.adminPort + "'"))
+      server.main(Array("-admin.port=:"+ config.serverConfig.adminPort))
     }
     server
   }
