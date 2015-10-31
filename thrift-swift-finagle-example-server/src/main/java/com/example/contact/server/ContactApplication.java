@@ -1,7 +1,7 @@
 package com.example.contact.server;
 
 import com.example.config.Config;
-import com.example.contact.server.config.FinagleServerConfig;
+import com.example.server.config.FinagleServerConfig;
 
 public class ContactApplication {
     public static void main(String[] args) throws Exception {

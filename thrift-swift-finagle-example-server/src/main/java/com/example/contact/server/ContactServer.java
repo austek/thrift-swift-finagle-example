@@ -1,11 +1,10 @@
 package com.example.contact.server;
 
-import com.example.contact.server.config.FinagleServerConfig;
 import com.example.contact.server.dao.impl.InMemoryRepository;
+import com.example.server.config.FinagleServerConfig;
 import com.twitter.finagle.ListeningServer;
 import com.twitter.finagle.Thrift;
 import com.twitter.finagle.exp.swift.SwiftService;
-import com.twitter.finagle.param.Label;
 import com.twitter.util.Await;
 
 import org.apache.commons.lang3.StringUtils;
@@ -30,8 +29,7 @@ public class ContactServer {
 
     public void start() throws Exception {
         System.out.println("Starting server:\n\tPort: " + this.config.serverConfig.port);
-        Thrift.Server thriftServer = (Thrift.Server) Thrift.server()
-                .configured(new Label(this.config.serverConfig.name).mk());
+        Thrift.Server thriftServer = Thrift.server();
         server = thriftServer.serve(
                 new InetSocketAddress(this.config.serverConfig.port),
                 new SwiftService(

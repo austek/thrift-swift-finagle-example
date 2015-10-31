@@ -1,7 +1,3 @@
-tracing:
-  server: 127.0.0.1
-  port: 0000
-
 client:
   server:
     hosts: "127.0.0.1:9510"
