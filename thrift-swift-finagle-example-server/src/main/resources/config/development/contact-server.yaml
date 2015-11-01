@@ -2,3 +2,8 @@ server:
   name: "contact-server"
   port: 9510
   adminPort: 9511
+
+tracing:
+  server: 192.168.99.100
+  port: 9410
+  sample-rate: 1.0
