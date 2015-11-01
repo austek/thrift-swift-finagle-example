@@ -42,6 +42,10 @@
             <groupId>com.twitter</groupId>
             <artifactId>twitter-server_${scala.major.version}</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.twitter</groupId>
+            <artifactId>finagle-stats_${scala.major.version}</artifactId>
+        </dependency>
 
         <!-- TEST DEPENDENCIES -->
         <dependency>

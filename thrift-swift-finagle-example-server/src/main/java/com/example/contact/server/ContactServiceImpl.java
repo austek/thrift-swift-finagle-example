@@ -7,6 +7,9 @@ import com.example.contact.api.exception.ValidationException;
 import com.example.contact.api.model.Contact;
 import com.example.contact.api.model.ContactRequest;
 import com.example.contact.server.dao.ContactRepository;
+import com.twitter.finagle.stats.Counter;
+import com.twitter.finagle.stats.LoadedStatsReceiver;
+import com.twitter.finagle.stats.StatsReceiver;
 import com.twitter.util.Future;
 import com.twitter.util.Promise;
 
@@ -19,6 +22,9 @@ public class ContactServiceImpl implements ContactService {
 
     private ContactRepository contactRepository;
 
+    private final StatsReceiver statsReceiver = LoadedStatsReceiver.scope("contact-manager");
+    private final Counter contactCnt = statsReceiver.counter0("contact-cnt");
+
     public ContactServiceImpl(final ContactRepository contactRepository) {
         this.contactRepository = contactRepository;
     }
@@ -29,6 +35,7 @@ public class ContactServiceImpl implements ContactService {
 
         try {
             promise.setValue(contactRepository.save(contactRequest));
+            contactCnt.incr();
         } catch (DaoException | ValidationException e) {
             promise.setException(e);
         }
