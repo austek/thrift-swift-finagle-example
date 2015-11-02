@@ -30,7 +30,7 @@
         <libthrift.version>0.9.1</libthrift.version>
         <joda-time.version>2.0</joda-time.version>
         <jsr305.version>2.0.1</jsr305.version>
-        <dropwizard.version>0.8.2</dropwizard.version>
+        <dropwizard.version>0.9.0</dropwizard.version>
         <brave.version>3.0.0</brave.version>
         <brave.impl.version>2.4.2</brave.impl.version>
         <commons.version>3.1</commons.version>
