@@ -1,7 +1,8 @@
-tracing:
-  server: 127.0.0.1
-  port: 0000
-
 client:
   server:
     hosts: "127.0.0.1:9510"
+
+tracing:
+  server: 192.168.99.100
+  port: 9410
+  sample-rate: 1.0
