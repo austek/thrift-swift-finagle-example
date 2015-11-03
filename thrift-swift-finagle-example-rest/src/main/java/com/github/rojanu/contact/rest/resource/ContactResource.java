@@ -33,13 +33,15 @@ public class ContactResource {
     private final ServerTracer serverTracer;
 
     public ContactResource(ClientConfig clientConfig, ServerTracer serverTracer) {
-        client = new ContactClientFactory(clientConfig).getClient();
+        client = new ContactClientFactory(clientConfig).getClient("contact-client");
         this.serverTracer = serverTracer;
     }
 
     @POST
     @Timed
     public Response addContact(RestContactRequest restContactRequest) {
+        serverTracer.submitAnnotation("Adding Contact");
+
         try {
             Future<Contact> contactFuture = client.get().create(RestContactRequest.to(restContactRequest));
             Contact contact = Await.result(contactFuture);

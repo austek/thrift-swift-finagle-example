@@ -14,4 +14,8 @@ public class ContactClientFactory extends AbstractClientFactory<ContactService>{
     public CloseableClient<ContactService> getClient() {
         return getCloseableClient();
     }
+
+    public CloseableClient<ContactService> getClient(String name) {
+        return getCloseableClient(name);
+    }
 }
