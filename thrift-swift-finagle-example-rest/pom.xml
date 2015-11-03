@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>thrift-swift-finagle-example</artifactId>
-        <groupId>thrift-swift-finagle</groupId>
+        <groupId>com.github.rojanu</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,13 +13,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>thrift-swift-finagle</groupId>
+            <groupId>com.github.rojanu</groupId>
             <artifactId>thrift-swift-finagle-example-client</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>thrift-swift-finagle</groupId>
-            <artifactId>thrift-swift-finagle-example-util</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
