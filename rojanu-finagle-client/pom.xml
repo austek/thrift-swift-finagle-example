@@ -3,49 +3,31 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>thrift-swift-finagle-example</artifactId>
         <groupId>com.github.rojanu</groupId>
+        <artifactId>thrift-swift-finagle-example</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>thrift-swift-finagle-example-server</artifactId>
-
+    <artifactId>rojanu-finagle-client</artifactId>
     <dependencies>
         <dependency>
             <groupId>com.github.rojanu</groupId>
-            <artifactId>thrift-swift-finagle-example-api</artifactId>
+            <artifactId>rojanu-finagle-service</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.rojanu</groupId>
-            <artifactId>rojanu-finagle-server</artifactId>
+            <artifactId>rojanu-config</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.twitter</groupId>
-            <artifactId>util-core_${scala.major.version}</artifactId>
+            <artifactId>finagle-zipkin_${scala.major.version}</artifactId>
         </dependency>
         <dependency>
             <groupId>com.twitter</groupId>
-            <artifactId>finagle-http_${scala.major.version}</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.twitter</groupId>
-            <artifactId>finagle-stats_${scala.major.version}</artifactId>
-        </dependency>
-
-        <!-- TEST DEPENDENCIES -->
-        <dependency>
-            <groupId>com.github.rojanu</groupId>
-            <artifactId>thrift-swift-finagle-example-client</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <scope>test</scope>
+            <artifactId>finagle-thrift_${scala.major.version}</artifactId>
         </dependency>
     </dependencies>
 
@@ -57,5 +39,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

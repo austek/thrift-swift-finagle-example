@@ -4,16 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>thrift-swift-finagle</groupId>
+    <groupId>com.github.rojanu</groupId>
     <artifactId>thrift-swift-finagle-example</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>rojanu-util</module>
+        <module>rojanu-config</module>
+        <module>rojanu-finagle-service</module>
+        <module>rojanu-finagle-client</module>
+        <module>rojanu-finagle-server</module>
         <module>thrift-swift-finagle-example-api</module>
         <module>thrift-swift-finagle-example-client</module>
         <module>thrift-swift-finagle-example-server</module>
         <module>thrift-swift-finagle-example-rest</module>
-        <module>thrift-swift-finagle-example-util</module>
     </modules>
 
     <properties>
@@ -79,6 +83,11 @@
             <dependency>
                 <groupId>com.twitter</groupId>
                 <artifactId>finagle-thrift_${scala.major.version}</artifactId>
+                <version>${finagle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.twitter</groupId>
+                <artifactId>finagle-zipkin_${scala.major.version}</artifactId>
                 <version>${finagle.version}</version>
             </dependency>
             <dependency>

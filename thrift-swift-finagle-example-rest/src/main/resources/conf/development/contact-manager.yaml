@@ -1,3 +1,12 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 9520
+
+  adminConnectors:
+    - type: http
+      port: 9521
+
 client:
   server:
     hosts: "127.0.0.1:9510"

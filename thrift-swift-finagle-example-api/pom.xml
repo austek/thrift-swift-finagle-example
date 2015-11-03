@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>thrift-swift-finagle-example</artifactId>
-        <groupId>thrift-swift-finagle</groupId>
+        <groupId>com.github.rojanu</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -12,6 +12,11 @@
     <artifactId>thrift-swift-finagle-example-api</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.rojanu</groupId>
+            <artifactId>rojanu-finagle-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.facebook.swift</groupId>
             <artifactId>swift-annotations</artifactId>
@@ -45,9 +50,10 @@
                 </executions>
                 <configuration>
                     <idlFile>contact-service.idl</idlFile>
-                    <javaPackage>com.example.contact.api</javaPackage>
+                    <javaPackage>com.github.rojanu.contact.api</javaPackage>
                     <swiftClassNames>
-                        <swiftClassName>com.example.contact.api.ContactService</swiftClassName>
+                        <swiftClassName>com.github.rojanu.service.BasicFinagleService</swiftClassName>
+                        <swiftClassName>com.github.rojanu.contact.api.ContactService</swiftClassName>
                     </swiftClassNames>
                 </configuration>
             </plugin>
