@@ -10,8 +10,26 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>thrift-swift-finagle-example-rest</artifactId>
+    <properties>
+        <version.dropwizard.jackson>2.6.0</version.dropwizard.jackson>
+            </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${version.dropwizard.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${version.dropwizard.jackson}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${version.dropwizard.jackson}</version>
+        </dependency>
         <dependency>
             <groupId>com.github.rojanu</groupId>
             <artifactId>thrift-swift-finagle-example-client</artifactId>

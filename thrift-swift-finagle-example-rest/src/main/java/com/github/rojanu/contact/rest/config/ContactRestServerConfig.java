@@ -8,7 +8,7 @@ import io.dropwizard.Configuration;
 
 public class ContactRestServerConfig  extends Configuration {
     @JsonProperty("tracing")
-    public TracingConfig tracing;
+    public TracingConfig tracingConfig;
 
     public ClientConfig client;
 }

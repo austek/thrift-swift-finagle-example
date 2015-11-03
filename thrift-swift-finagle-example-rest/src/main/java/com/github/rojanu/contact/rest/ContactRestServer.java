@@ -41,6 +41,7 @@ public class ContactRestServer extends Application<ContactRestServerConfig> {
 
     @Override
     public void run(ContactRestServerConfig contactRestServerConfig, Environment environment) throws Exception {
+        contactRestServerConfig.client.tracingConfig = contactRestServerConfig.tracingConfig;
         ServerTracer serverTracer = getServerTracer(contactRestServerConfig, environment);
 
         environment.jersey().register(new ContactResource(contactRestServerConfig.client, serverTracer));
@@ -48,16 +49,16 @@ public class ContactRestServer extends Application<ContactRestServerConfig> {
 
     private ServerTracer getServerTracer(ContactRestServerConfig contactRestServerConfig, Environment environment) {
         SpanCollector spanCollector;
-        if(contactRestServerConfig.tracing != null ) {
+        if(contactRestServerConfig.tracingConfig != null ) {
             spanCollector = new ZipkinSpanCollector(
-                    contactRestServerConfig.tracing.server,
-                    contactRestServerConfig.tracing.port);
+                    contactRestServerConfig.tracingConfig.server,
+                    contactRestServerConfig.tracingConfig.port);
         } else {
             spanCollector = new EmptySpanCollectorImpl();
         }
         int sampleRate = 0;
         try {
-            sampleRate = Math.round(1 / contactRestServerConfig.tracing.sampleRate);
+            sampleRate = Math.round(1 / contactRestServerConfig.tracingConfig.sampleRate);
         } catch (Exception ignored) {}
 
         ImmutableList<TraceFilter> traceFilters = ImmutableList.of((TraceFilter) new FixedSampleRateTraceFilter(sampleRate));
