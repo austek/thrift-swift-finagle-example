@@ -9,6 +9,8 @@ public class ClientConfig extends Config {
     public ServerConfig serverConfig;
     @JsonProperty("tracing")
     public TracingConfig tracingConfig;
+    @JsonProperty("use-jit-server")
+    public Boolean useJustInTimeServer = false;
 
     public static class ServerConfig {
         public String hosts;

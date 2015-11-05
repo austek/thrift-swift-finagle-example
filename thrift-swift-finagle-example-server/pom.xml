@@ -38,6 +38,12 @@
         <!-- TEST DEPENDENCIES -->
         <dependency>
             <groupId>com.github.rojanu</groupId>
+            <artifactId>rojanu-test-utils</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.rojanu</groupId>
             <artifactId>thrift-swift-finagle-example-client</artifactId>
             <version>${project.version}</version>
             <scope>test</scope>

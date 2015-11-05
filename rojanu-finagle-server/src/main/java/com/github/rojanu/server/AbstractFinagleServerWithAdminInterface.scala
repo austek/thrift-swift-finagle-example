@@ -3,6 +3,8 @@ package com.github.rojanu.server
 import java.io.{BufferedOutputStream, File, FileNotFoundException, FileOutputStream}
 import java.net.InetSocketAddress
 
+import com.github.rojanu.config.client.ClientConfig
+import com.github.rojanu.config.client.ClientConfig.ServerConfig
 import com.github.rojanu.server.config.FinagleServerConfig
 import com.twitter.finagle.tracing.Tracer
 import com.twitter.finagle.zipkin.thrift.ZipkinTracer
@@ -85,5 +87,20 @@ class AbstractFinagleServerWithAdminInterface(val config: FinagleServerConfig) e
 
   def getServer: ListeningServer = {
     server
+  }
+
+  def getClientConfig(): ClientConfig = {
+    getClientConfig(null)
+  }
+
+  def getClientConfig(cf: ClientConfig): ClientConfig = {
+    val clientConfig = if (cf != null) cf else new ClientConfig
+    if (cf == null) {
+      clientConfig.serverConfig = new ServerConfig
+      clientConfig.configFolder = config.configFolder
+      clientConfig.tracingConfig = config.tracingConfig
+    }
+    clientConfig.serverConfig.hosts = "localhost:" + config.serverConfig.port
+    clientConfig
   }
 }
