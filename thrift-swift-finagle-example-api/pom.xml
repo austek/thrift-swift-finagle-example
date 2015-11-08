@@ -16,46 +16,68 @@
             <groupId>com.github.rojanu</groupId>
             <artifactId>rojanu-finagle-service</artifactId>
             <version>${project.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>com.facebook.swift</groupId>
-            <artifactId>swift-annotations</artifactId>
+            <groupId>org.apache.thrift</groupId>
+            <artifactId>libthrift</artifactId>
         </dependency>
         <dependency>
             <groupId>com.twitter</groupId>
-            <artifactId>util-core_${scala.major.version}</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
+            <artifactId>scrooge-core_${scala.major.version}</artifactId>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <!--<plugin>-->
+            <!--<groupId>com.github.rojanu</groupId>-->
+            <!--<artifactId>swift2thrift-maven-plugin</artifactId>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>process-classes</phase>-->
+            <!--<goals>-->
+            <!--<goal>generate</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
+            <!--<configuration>-->
+            <!--<idlFile>contact-service.idl</idlFile>-->
+            <!--<javaPackage>com.github.rojanu.contact.api</javaPackage>-->
+            <!--<swiftClassNames>-->
+            <!--<swiftClassName>com.github.rojanu.service.BasicFinagleService</swiftClassName>-->
+            <!--<swiftClassName>com.github.rojanu.contact.api.ContactService</swiftClassName>-->
+            <!--</swiftClassNames>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
             <plugin>
-                <groupId>com.github.rojanu</groupId>
-                <artifactId>swift2thrift-maven-plugin</artifactId>
+                <groupId>com.twitter</groupId>
+                <artifactId>scrooge-maven-plugin</artifactId>
+                <version>${version.scrooge}</version>
+                <configuration>
+                    <language>scala</language>
+                    <!-- default is scala, can also be java -->
+                    <thriftOpts>
+                        <!-- add other Scrooge command line options using thriftOpts -->
+                        <thriftOpt>--finagle</thriftOpt>
+                    </thriftOpts>
+                </configuration>
                 <executions>
                     <execution>
-                        <phase>process-classes</phase>
+                        <id>thrift-sources</id>
+                        <phase>generate-sources</phase>
                         <goals>
-                            <goal>generate</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>thrift-test-sources</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <idlFile>contact-service.idl</idlFile>
-                    <javaPackage>com.github.rojanu.contact.api</javaPackage>
-                    <swiftClassNames>
-                        <swiftClassName>com.github.rojanu.service.BasicFinagleService</swiftClassName>
-                        <swiftClassName>com.github.rojanu.contact.api.ContactService</swiftClassName>
-                    </swiftClassNames>
-                </configuration>
             </plugin>
         </plugins>
     </build>
