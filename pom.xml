@@ -30,7 +30,6 @@
         <finagle-http.version>6.30.0</finagle-http.version>
         <twitter-util.version>6.29.0</twitter-util.version>
         <twitter-server.version>1.15.0</twitter-server.version>
-        <finagle-swift.version>0.1-SNAPSHOT</finagle-swift.version>
         <libthrift.version>0.9.1</libthrift.version>
         <joda-time.version>2.0</joda-time.version>
         <jsr305.version>2.0.1</jsr305.version>
@@ -97,11 +96,6 @@
                 <groupId>com.twitter</groupId>
                 <artifactId>finagle-http_${scala.major.version}</artifactId>
                 <version>${finagle-http.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>io.github.finagle</groupId>
-                <artifactId>finagle-swift_${scala.major.version}</artifactId>
-                <version>${finagle-swift.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.twitter</groupId>
@@ -242,14 +236,19 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>1.9.1</version>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
                 </plugin>
                 <plugin>
-                    <groupId>com.facebook.mojo</groupId>
-                    <artifactId>swift2thrift-maven-plugin</artifactId>
-                    <version>1.0-SNAPSHOT</version>
+                    <groupId>com.twitter</groupId>
+                    <artifactId>scrooge-maven-plugin</artifactId>
+                    <version>${version.scrooge}</version>
                 </plugin>
                 <plugin>
                     <groupId>net.alchim31.maven</groupId>
@@ -293,6 +292,11 @@
                             <jvmArg>-Xmx2G</jvmArg>
                         </jvmArgs>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.6</version>
                 </plugin>
             </plugins>
         </pluginManagement>

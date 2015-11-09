@@ -16,6 +16,7 @@
             <groupId>com.github.rojanu</groupId>
             <artifactId>rojanu-finagle-service</artifactId>
             <version>${project.version}</version>
+            <classifier>idl</classifier>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -53,7 +54,6 @@
             <plugin>
                 <groupId>com.twitter</groupId>
                 <artifactId>scrooge-maven-plugin</artifactId>
-                <version>${version.scrooge}</version>
                 <configuration>
                     <language>scala</language>
                     <!-- default is scala, can also be java -->

@@ -1,4 +1,4 @@
-namespace java com.github.rojanu.service.thiftjava
+namespace java com.github.rojanu.service
 #@namespace scala com.github.rojanu.service.thriftscala
 
 exception ThriftException {
@@ -14,7 +14,6 @@ exception ThriftServiceException {
   string getCode();
   string getMsg();
 }
-
 
 service BasicFinagleService {
   string getBuildInfo() throws (1: ThriftServiceException ex1);

@@ -1,8 +1,9 @@
-namespace java com.github.rojanu.contact.api.thiftjava
+
+namespace java com.github.rojanu.contact.api
 #@namespace java com.github.rojanu.contact.scala.api.thriftscala
 
+include "com/github/rojanu/service/basicService.thrift"
 
-include "basicSservice.thrift"
 
 struct ContactRequest {
   1:  string name;
@@ -27,7 +28,7 @@ exception ContactNotFoundException {
 exception DaoException {
 }
 
-service ContactService extends basicSservice.BasicFinagleService {
+service ContactService extends basicService.BasicFinagleService {
   Contact create(1:  ContactRequest arg0);
   string delete(1:  string arg0) throws (1: ContactNotFoundException ex1);
   Contact get(1:  string arg0) throws (1: ContactNotFoundException ex1);
