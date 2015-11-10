@@ -1,9 +1,10 @@
 package com.github.rojanu.client
 
 import com.github.rojanu.config.client.ClientConfig
-import com.github.rojanu.service.BasicFinagleService
+import com.github.rojanu.service.thriftscala.BasicFinagleService
+import com.twitter.util.Future
 
-abstract class AbstractClientFactory[T <: BasicFinagleService](config: ClientConfig, clazz: Class[T]){
+abstract class AbstractClientFactory[T <: BasicFinagleService[Future]](config: ClientConfig, clazz: Class[T]){
   val factory = new AbstractClient[T](config, clazz) {
   }
 

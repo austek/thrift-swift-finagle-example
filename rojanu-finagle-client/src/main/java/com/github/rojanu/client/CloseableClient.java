@@ -1,13 +1,14 @@
 package com.github.rojanu.client;
 
-import com.github.rojanu.service.BasicFinagleService;
+import com.github.rojanu.service.thriftscala.BasicFinagleService;
 import com.twitter.finagle.Service;
 import com.twitter.finagle.thrift.ThriftClientRequest;
+import com.twitter.util.Future;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class CloseableClient<T extends BasicFinagleService> implements AutoCloseable {
+public class CloseableClient<T extends BasicFinagleService<Future>> implements AutoCloseable {
 
     private final Service<ThriftClientRequest, byte[]> transport;
     private final T o;

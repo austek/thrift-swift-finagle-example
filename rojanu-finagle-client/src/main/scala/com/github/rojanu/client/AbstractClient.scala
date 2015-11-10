@@ -1,14 +1,15 @@
 package com.github.rojanu.client
 
 import com.github.rojanu.config.client.ClientConfig
-import com.github.rojanu.service.BasicFinagleService
+import com.github.rojanu.service.thriftscala.BasicFinagleService
 import com.twitter.finagle.stats.DefaultStatsReceiver
 import com.twitter.finagle.thrift.ThriftClientRequest
 import com.twitter.finagle.tracing.Tracer
 import com.twitter.finagle.zipkin.thrift.ZipkinTracer
 import com.twitter.finagle.{Service, Thrift, param}
+import com.twitter.util.Future
 
-class AbstractClient[T <: BasicFinagleService](config: ClientConfig, clazz: Class[T]) {
+class AbstractClient[T <: BasicFinagleService[Future]](config: ClientConfig, clazz: Class[T]) {
   private var closeableClient: CloseableClient[T] = null
 
   def getCloseableClient: CloseableClient[T] = {
@@ -39,7 +40,7 @@ class AbstractClient[T <: BasicFinagleService](config: ClientConfig, clazz: Clas
           .toService
 
       val contactService: T = thriftClient.newIface(config.serverConfig.hosts, name, clazz)
-      closeableClient = new CloseableClient(thriftClientRequestService, contactService)
+      closeableClient = new CloseableClient[T](thriftClientRequestService, contactService)
       closeableClient
     } catch {
       case ex: Exception => {

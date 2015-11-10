@@ -17,7 +17,6 @@
             <artifactId>rojanu-finagle-service</artifactId>
             <version>${project.version}</version>
             <classifier>idl</classifier>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.thrift</groupId>
@@ -31,26 +30,25 @@
 
     <build>
         <plugins>
-            <!--<plugin>-->
-            <!--<groupId>com.github.rojanu</groupId>-->
-            <!--<artifactId>swift2thrift-maven-plugin</artifactId>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<phase>process-classes</phase>-->
-            <!--<goals>-->
-            <!--<goal>generate</goal>-->
-            <!--</goals>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--<configuration>-->
-            <!--<idlFile>contact-service.idl</idlFile>-->
-            <!--<javaPackage>com.github.rojanu.contact.api</javaPackage>-->
-            <!--<swiftClassNames>-->
-            <!--<swiftClassName>com.github.rojanu.service.BasicFinagleService</swiftClassName>-->
-            <!--<swiftClassName>com.github.rojanu.contact.api.ContactService</swiftClassName>-->
-            <!--</swiftClassNames>-->
-            <!--</configuration>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>default-jar</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <classifier>idl</classifier>
+                            <includes>
+                                <include>**/*.thrift</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.twitter</groupId>
                 <artifactId>scrooge-maven-plugin</artifactId>
