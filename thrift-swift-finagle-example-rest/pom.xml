@@ -12,9 +12,13 @@
     <artifactId>thrift-swift-finagle-example-rest</artifactId>
     <properties>
         <version.dropwizard.jackson>2.6.0</version.dropwizard.jackson>
-            </properties>
+    </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.github.rojanu</groupId>
+            <artifactId>dropwizard-brave</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -40,20 +44,12 @@
             <artifactId>dropwizard-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.kristofa</groupId>
-            <artifactId>brave-zipkin-spancollector</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.kristofa</groupId>
-            <artifactId>brave-jersey2</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.kristofa</groupId>
-            <artifactId>brave-impl</artifactId>
-        </dependency>
-        <dependency>
             <groupId>commons-lang</groupId>
             <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.collections</groupId>
+            <artifactId>google-collections</artifactId>
         </dependency>
     </dependencies>
 

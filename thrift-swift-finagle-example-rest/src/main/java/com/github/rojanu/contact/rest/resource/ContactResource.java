@@ -45,6 +45,7 @@ public class ContactResource {
         try {
             Future<Contact> contactFuture = client.get().create(RestContactRequest.to(restContactRequest));
             Contact contact = Await.result(contactFuture);
+            serverTracer.submitAnnotation("Finished Adding Contact");
             return Response.ok(contact).build();
         } catch (Exception e) {
             e.printStackTrace();

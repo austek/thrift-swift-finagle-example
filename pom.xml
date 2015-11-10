@@ -36,8 +36,6 @@
         <joda-time.version>2.0</joda-time.version>
         <jsr305.version>2.0.1</jsr305.version>
         <dropwizard.version>0.9.0</dropwizard.version>
-        <brave.version>3.0.0</brave.version>
-        <brave.impl.version>2.4.2</brave.impl.version>
         <commons.version>3.1</commons.version>
         <guava.version>18.0</guava.version>
         <jackson.version>2.5.1</jackson.version>
@@ -58,6 +56,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>com.github.rojanu</groupId>
+                <artifactId>dropwizard-brave</artifactId>
+                <version>0.1-SNAPSHOT</version>
+            </dependency>
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-library</artifactId>
@@ -135,39 +138,6 @@
                 <version>${dropwizard.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.kristofa</groupId>
-                <artifactId>brave-zipkin-spancollector</artifactId>
-                <version>${brave.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.github.kristofa</groupId>
-                <artifactId>brave-jersey2</artifactId>
-                <version>${brave.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>com.github.kristofa</groupId>
-                <artifactId>brave-impl</artifactId>
-                <version>${brave.impl.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>slf4j-log4j12</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons.version}</version>
@@ -226,6 +196,11 @@
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpcore</artifactId>
                 <version>${httpcore.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.collections</groupId>
+                <artifactId>google-collections</artifactId>
+                <version>1.0</version>
             </dependency>
 
             <!-- TEST DEPENDENCIES -->
